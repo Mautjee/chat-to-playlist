@@ -1,6 +1,8 @@
 import { Authentication } from "./stages";
 import { useGlobalStore } from "../store";
 import { Upload } from "./stages/upload";
+import { TopBar } from "./top-bar";
+import { Processing } from "./stages/processing";
 
 export const MainContainer = () => {
   const stage = useGlobalStore((state) => state.stage);
@@ -12,13 +14,12 @@ export const MainContainer = () => {
       case "upload":
         return <Upload />;
       case "processing":
-        return <div>Processing</div>;
-      default:
-        return <div>Authentication</div>;
+        return <Processing />;
     }
   };
   return (
     <div className=" flex h-5/6 w-3/4 flex-col items-center justify-center rounded border border-dashed border-black p-4 ">
+      <TopBar />
       {presentState()}
     </div>
   );
