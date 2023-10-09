@@ -9,7 +9,7 @@ import {
 import { env } from "@/env.mjs";
 import { JWT } from "next-auth/jwt";
 import spotifyProfile, { refreshAccessToken } from "./spotifyProfile";
-import { AuthUser, user } from "@/types/user";
+import { AuthUser } from "@/types/user";
 
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`

@@ -1,4 +1,6 @@
 "use client";
+
+import { AuthUser } from "@/types/user";
 import {
   AccessToken,
   IAuthStrategy,
@@ -6,7 +8,6 @@ import {
   SdkOptions,
   SpotifyApi,
 } from "@spotify/web-api-ts-sdk";
-import { AuthUser } from "@/app/api/auth/[...nextauth]/authOptions";
 import { getSession, signIn } from "next-auth/react";
 
 /**

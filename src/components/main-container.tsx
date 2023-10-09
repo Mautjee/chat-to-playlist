@@ -1,8 +1,7 @@
-import { Authentication } from "./stages";
+import { Authentication, Processing, Selecting } from "./stages";
 import { useGlobalStore } from "../store";
 import { Upload } from "./stages/upload";
 import { TopBar } from "./top-bar";
-import { Processing } from "./stages/processing";
 
 export const MainContainer = () => {
   const stage = useGlobalStore((state) => state.stage);
@@ -15,6 +14,8 @@ export const MainContainer = () => {
         return <Upload />;
       case "processing":
         return <Processing />;
+      case "selecting":
+        return <Selecting />;
     }
   };
   return (
