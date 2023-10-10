@@ -1,12 +1,13 @@
 import { useGlobalStore } from "@/store";
-import { FormEvent } from "react";
+import { FormEvent, useState } from "react";
 
 export const Selecting = () => {
   const trackIds = useGlobalStore((state) => state.trackIds);
+  const [playlistName, setPlaylistName] = useState("");
+  const [playlistDescription, setPlaylistDescription] = useState("");
 
-  async function onSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    console.log("submitting");
+  async function onSubmit() {
+    console.log({ trackIds, playlistName, playlistDescription });
   }
 
   return (
@@ -15,25 +16,26 @@ export const Selecting = () => {
         <p className="text-2xl font-bold text-white">
           What will the name of the playist be:
         </p>
-        <form className="flex flex-col gap-4" onSubmit={onSubmit}>
-          <input
-            id="playlist-name"
-            className="rounded-md bg-gray-800 p-2 text-white"
-            type="text"
-            placeholder="Playlist name"
-          />
-          <input
-            id="playlist-description"
-            className="rounded-md bg-gray-800 p-2 text-white"
-            type="text"
-            placeholder="Playlist description"
-          />
-          <input
-            className="rounded-md bg-green-500 p-2 text-white"
-            type="submit"
-            value="Create playlist"
-          />
-        </form>
+        <input
+          id="playlist-name"
+          className="rounded-md bg-gray-800 p-2 text-white"
+          type="text"
+          placeholder="Playlist name"
+          onChange={(e) => setPlaylistName(e.target.value)}
+        />
+        <input
+          id="playlist-description"
+          className="rounded-md bg-gray-800 p-2 text-white"
+          type="text"
+          placeholder="Playlist description"
+          onChange={(e) => setPlaylistDescription(e.target.value)}
+        />
+        <button
+          className="rounded-full bg-white/10 px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20"
+          onClick={onSubmit}
+        >
+          Create playlist
+        </button>
       </div>
     </div>
   );

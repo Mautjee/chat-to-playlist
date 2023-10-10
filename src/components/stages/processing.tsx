@@ -13,15 +13,19 @@ export const Processing = () => {
   const processFile = async () => {
     if (!file) return;
     const decodedFile = await decodeFileContent(file);
-    const regex =
-      /https?:\/\/(?:open\.spotify\.com\/track\/|spotify\.link\/)(\w+)\b/g;
+    const regex = /https:\/\/open\.spotify\.com\/track\/(\w+)/gm;
+
+    //Regex incliding spotify.link
+    //const regex = /https?:\/\/(?:open\.spotify\.com\/track\/|spotify\.link\/)(\w+)\b/g;
 
     const matches = decodedFile.match(regex);
+    console.log(matches);
     if (!matches) return;
     const trackIdSet = new Set<string>();
+
     matches.forEach((match) => {
-      const id = match.split("/").pop();
-      if (id) trackIdSet.add(id);
+      const trackId = match.split("/").pop();
+      trackId && trackIdSet.add(trackId);
     });
 
     setTrackIds(Array.from(trackIdSet));
