@@ -8,7 +8,7 @@ export function Authentication() {
 
   useEffect(() => {
     if (sessionData) {
-      setStage("upload");
+      setStage("start");
     }
   }, [sessionData, setStage]);
 

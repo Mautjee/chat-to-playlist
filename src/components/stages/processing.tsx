@@ -19,13 +19,15 @@ export const Processing = () => {
     //const regex = /https?:\/\/(?:open\.spotify\.com\/track\/|spotify\.link\/)(\w+)\b/g;
 
     const matches = decodedFile.match(regex);
-    console.log(matches);
+
     if (!matches) return;
+
     const trackIdSet = new Set<string>();
 
     matches.forEach((match) => {
       const trackId = match.split("/").pop();
-      trackId && trackIdSet.add(trackId);
+
+      trackId && trackIdSet.add(`spotify:track:${trackId}`);
     });
 
     setTrackIds(Array.from(trackIdSet));

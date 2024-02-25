@@ -1,5 +1,3 @@
-"use client";
-
 import { AuthUser } from "@/types/user";
 import {
   AccessToken,

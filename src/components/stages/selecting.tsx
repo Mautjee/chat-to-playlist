@@ -1,20 +1,25 @@
 import { useGlobalStore } from "@/store";
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 
 export const Selecting = () => {
-  const trackIds = useGlobalStore((state) => state.trackIds);
   const [playlistName, setPlaylistName] = useState("");
   const [playlistDescription, setPlaylistDescription] = useState("");
+  const setPlaylistDetails = useGlobalStore(
+    (state) => state.setPlaylistDetails,
+  );
+  const setStage = useGlobalStore((state) => state.setStage);
 
   async function onSubmit() {
-    console.log({ trackIds, playlistName, playlistDescription });
+    if (!playlistName || !playlistDescription) return;
+    setPlaylistDetails({ playlistName, playlistDescription });
+    setStage("summary");
   }
 
   return (
     <div className="flex h-full w-full flex-col justify-between">
       <div className="flex h-full w-full flex-col items-center justify-center gap-4">
         <p className="text-2xl font-bold text-white">
-          What will the name of the playist be:
+          What will the name of the playist be
         </p>
         <input
           id="playlist-name"
@@ -34,7 +39,7 @@ export const Selecting = () => {
           className="rounded-full bg-white/10 px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20"
           onClick={onSubmit}
         >
-          Create playlist
+          Summary
         </button>
       </div>
     </div>
