@@ -13,7 +13,7 @@ interface Store {
 }
 
 export const useGlobalStore = create<Store>((set) => ({
-  stage: "authentication",
+  stage: "landing",
   file: undefined,
   trackIds: [],
 

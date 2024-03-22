@@ -2,6 +2,9 @@
 
 import { type ChangeEvent, type MouseEvent, useState } from "react";
 import { useGlobalStore } from "@/store/";
+import { Input } from "../ui/input";
+import { Button } from "../ui/button";
+import { Label } from "../ui/label";
 
 export const Upload = () => {
   const file = useGlobalStore((state) => state.file);
@@ -51,28 +54,20 @@ export const Upload = () => {
     <div className="flex h-full w-full flex-col justify-between">
       <div className="flex h-full w-full flex-col items-center justify-center gap-4">
         <form>
-          <input
+          <Label htmlFor="file">Chat history</Label>
+          <Input
             type="file"
             name="file"
+            id="file"
             accept=".txt"
-            className="rounded-full bg-white/10 px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20"
             onChange={handleUpload}
           />
         </form>
         <div className="flex flex-row gap-4">
-          <button
-            className="rounded-full bg-white/10 px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20"
-            onClick={handleCancel}
-          >
-            Cancel
-          </button>
-          <button
-            className="bg-white/10 px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20 enabled:rounded-full disabled:opacity-10"
-            onClick={handleNext}
-            disabled={!uploaded}
-          >
+          <Button onClick={handleCancel}>Cancel</Button>
+          <Button onClick={handleNext} disabled={!uploaded}>
             Next
-          </button>
+          </Button>
         </div>
       </div>
     </div>

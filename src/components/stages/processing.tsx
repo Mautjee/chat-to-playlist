@@ -1,6 +1,7 @@
 import { useGlobalStore } from "@/store";
 import { decodeFileContent } from "@/utils/file-handling";
 import { useState } from "react";
+import { Button } from "../ui/button";
 
 export const Processing = () => {
   const file = useGlobalStore((state) => state.file);
@@ -40,32 +41,18 @@ export const Processing = () => {
       <div className="flex h-full w-full flex-col items-center justify-center gap-4">
         {doneProcessing ? (
           <>
-            <h1 className="text-4xl font-bold text-white">
-              Your songs have been extracted!
-            </h1>
-            <p className="text-xl text-white">
+            <h1>Your songs have been extracted!</h1>
+            <p>
               We found a total of{" "}
               <span className="font-bold">{trackIds.length}</span> songs
             </p>
-            <button
-              className="rounded-full bg-white/10 px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20"
-              onClick={handleNext}
-            >
-              Next
-            </button>
+            <Button onClick={handleNext}>Next</Button>
           </>
         ) : (
           <>
-            <h3 className="text-4xl font-bold text-white">Start extracting</h3>
-            <p className="text-xl text-white">
-              Extract all the songs from your WhatsApp chat
-            </p>
-            <button
-              className="rounded-full bg-white/10 px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20"
-              onClick={processFile}
-            >
-              Start
-            </button>
+            <h3>Start extracting</h3>
+            <p>Extract all the songs from your WhatsApp chat</p>
+            <Button onClick={processFile}>Start</Button>
           </>
         )}
       </div>
