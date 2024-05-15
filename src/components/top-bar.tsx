@@ -23,7 +23,7 @@ export const TopBar = () => {
         <NavigationMenuList>
           <NavigationMenuLink
             className={navigationMenuTriggerStyle()}
-            onClick={() => handleMenuClick("upload")}
+            onClick={() => handleMenuClick("landing")}
           >
             Chat to playlist
           </NavigationMenuLink>

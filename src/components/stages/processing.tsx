@@ -52,7 +52,7 @@ export const Processing = () => {
           <>
             <h3>Start extracting</h3>
             <p>Extract all the songs from your WhatsApp chat</p>
-            <Button onClick={processFile}>Start</Button>
+            <Button onClick={() => void processFile()}>Start</Button>
           </>
         )}
       </div>

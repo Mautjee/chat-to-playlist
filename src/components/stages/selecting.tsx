@@ -7,9 +7,16 @@ export const Selecting = () => {
   const trackIds = useGlobalStore((state) => state.trackIds);
   const [playlistName, setPlaylistName] = useState("");
   const [playlistDescription, setPlaylistDescription] = useState("");
+  const setLocalPlaylist = useGlobalStore((state) => state.setLocalPlaylist);
+  const setStage = useGlobalStore((state) => state.setStage);
 
   const onSubmit = () => {
-    console.log({ trackIds, playlistName, playlistDescription });
+    setLocalPlaylist({
+      name: playlistName,
+      description: playlistDescription,
+      trackIds: trackIds,
+    });
+    setStage("summary");
   };
 
   return (
