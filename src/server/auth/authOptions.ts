@@ -1,36 +1,9 @@
+/* eslint-disable @typescript-eslint/require-await */
 import { type GetServerSidePropsContext } from "next";
-import {
-  getServerSession,
-  type DefaultSession,
-  type NextAuthOptions,
-  Account,
-} from "next-auth";
+import { getServerSession, type NextAuthOptions } from "next-auth";
 
 import { env } from "@/env.mjs";
-import { JWT } from "next-auth/jwt";
-import spotifyProfile, { refreshAccessToken } from "./spotifyProfile";
-import { AuthUser } from "@/types/user";
-
-/**
- * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
- * object and keep type safety.
- *
- * @see https://next-auth.js.org/getting-started/typescript#module-augmentation
- */
-declare module "next-auth" {
-  interface Session extends DefaultSession {
-    user: DefaultSession["user"] & {
-      id: string;
-      // ...other properties
-      // role: UserRole;
-    };
-  }
-
-  // interface User {
-  //   // ...other properties
-  //   // role: UserRole;
-  // }
-}
+import spotifyProfile from "./spotifyProfile";
 
 /**
  * Options for NextAuth.js used to configure adapters, providers, callbacks, etc.
@@ -43,38 +16,25 @@ export const authOptions: NextAuthOptions = {
     maxAge: 60 * 60, // 1 hour
   },
   callbacks: {
-    async jwt({ token, account }: { token: JWT; account: Account | null }) {
-      if (!account) {
-        return token;
+    async jwt({ token, account }) {
+      if (account) {
+        token.accessToken = account?.access_token;
+        token.tokenType = account?.token_type;
+        token.expiresAt = account?.expires_at ?? Date.now() / 1000;
+        token.expiresIn = (account?.expires_at ?? 0) - Date.now() / 1000;
+        token.refreshToken = account?.refresh_token;
+        token.scope = account?.scope;
       }
-      const updatedToken = {
-        ...token,
-        access_token: account?.access_token,
-        token_type: account?.token_type,
-        expires_at: account?.expires_at ?? Date.now() / 1000,
-        expires_in: (account?.expires_at ?? 0) - Date.now() / 1000,
-        refresh_token: account?.refresh_token,
-        scope: account?.scope,
-        id: account?.providerAccountId,
-      };
-      if (Date.now() < updatedToken.expires_at) {
-        return refreshAccessToken(updatedToken);
-      }
-      return updatedToken;
+      // if (Date.now() < account.expires_at) {
+      //   return refreshAccessToken(updatedToken);
+      // }
+      return token;
     },
-    async session({ session, token }: { session: any; token: any }) {
-      const user: AuthUser = {
-        ...session.user,
-        access_token: token.access_token,
-        token_type: token.token_type,
-        expires_at: token.expires_at,
-        expires_in: token.expires_in,
-        refresh_token: token.refresh_token,
-        scope: token.scope,
-        id: token.id,
-      };
-      session.user = user;
-      session.error = token.error;
+
+    async session({ session, token }) {
+      if (session.user) {
+        session.user.accessToken = token.accessToken;
+      }
       return session;
     },
   },
