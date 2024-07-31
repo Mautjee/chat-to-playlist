@@ -29,7 +29,6 @@ export const TopBar = () => {
           </NavigationMenuLink>
         </NavigationMenuList>
       </NavigationMenu>
-      ,
       {sessionData ? (
         <Button onClick={() => void signOut()}>Sign out</Button>
       ) : (
