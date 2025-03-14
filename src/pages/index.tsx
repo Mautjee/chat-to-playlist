@@ -14,7 +14,7 @@ export default function Home() {
         <meta property="og:url" content="https://chat-to-playlist.vercel.app/" />
         <meta property="og:title" content="Chat to Playlist - Convert Spotify links to playlists" />
         <meta property="og:description" content="Turn Spotify links shared in your chats into custom playlists. Upload your chat export, extract songs, and create a playlist in seconds." />
-        <meta property="og:image" content="https://chat-to-playlist.vercel.app/og-image.svg" />
+        <meta property="og:image" content="https://chat-to-playlist.vercel.app/og-image.png" />
       </Head>
       <main className="flex h-screen flex-col items-center justify-center">
         <MainContainer />
