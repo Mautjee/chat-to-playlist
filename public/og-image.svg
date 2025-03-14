@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#f8fafc" />
+  
+  <!-- Green card container -->
+  <rect x="180" y="125" width="840" height="380" rx="20" fill="#f0fdf4" stroke="#22c55e" stroke-width="4" />
+  
+  <!-- Logo elements -->
+  <g transform="translate(270, 235) scale(3.5)">
+    <!-- Background -->
+    <rect width="32" height="32" rx="6" fill="#22c55e" />
+    
+    <!-- Chat bubble -->
+    <path d="M6 10C6 8.89543 6.89543 8 8 8H16C17.1046 8 18 8.89543 18 10V14C18 15.1046 17.1046 16 16 16H12L9 19V16H8C6.89543 16 6 15.1046 6 14V10Z" fill="white" />
+    
+    <!-- Music note -->
+    <path d="M24 8C24 7.44772 23.5523 7 23 7C22.4477 7 22 7.44772 22 8V16.5C21.4692 16.1852 20.8497 16 20.1754 16C18.4237 16 17 17.3431 17 19C17 20.6569 18.4237 22 20.1754 22C21.9271 22 23.3509 20.6569 23.3509 19V12H26V8H24Z" fill="white" />
+  </g>
+  
+  <!-- Title -->
+  <text x="600" y="275" font-family="Arial, sans-serif" font-weight="bold" font-size="48" text-anchor="middle" fill="#111827">Chat to Playlist</text>
+  
+  <!-- Subtitle -->
+  <text x="600" y="335" font-family="Arial, sans-serif" font-size="28" text-anchor="middle" fill="#374151">Convert Spotify links from chats into playlists</text>
+  
+  <!-- Bottom tag -->
+  <text x="600" y="410" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#22c55e">Upload • Extract • Create • Enjoy</text>
+</svg>
