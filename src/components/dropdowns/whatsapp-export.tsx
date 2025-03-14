@@ -1,4 +1,3 @@
-/* eslint no-use-before-define: 0 */
 import { useState } from "react";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "../ui/collapsible";
 import { ChevronDown, ChevronUp, MessageSquare } from "lucide-react";
