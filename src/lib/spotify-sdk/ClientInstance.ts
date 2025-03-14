@@ -21,7 +21,7 @@ class ServerSideAuthStrategy implements IAuthStrategy {
   public getOrCreateAccessToken(): Promise<AccessToken> {
     return this.getAccessToken();
   }
-
+// eslint-disable-next-line
   public async getAccessToken(): Promise<AccessToken> {
     if (!this.accessToken) {
       throw new Error("No access token provided");
