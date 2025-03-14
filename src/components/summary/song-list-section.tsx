@@ -57,7 +57,7 @@ export const SongListSection: FC<SongListSectionProps> = ({
         )}
       </div>
       
-      <div className="flex-1 overflow-y-auto rounded-lg border border-gray-200 bg-white min-h-[300px] max-h-full">
+      <div className="flex-1 overflow-y-auto rounded-lg bg-white min-h-[300px] max-h-full">
         {renderSongCards()}
       </div>
     </div>
