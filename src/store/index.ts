@@ -71,7 +71,6 @@ export const useGlobalStore = create<Store>((set) => ({
       upload: false,
       processing: false,
       selecting: false,
-      complete: false,
       summary: false
     }
   })

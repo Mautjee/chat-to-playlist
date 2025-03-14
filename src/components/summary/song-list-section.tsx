@@ -1,5 +1,5 @@
-import { FC } from "react";
-import { Song } from "@/types/playlist";
+import { type FC } from "react";
+import { type Song } from "@/types/playlist";
 import { SongCard } from "../song-card";
 import { Button } from "../ui/button";
 import { Music, Undo2 } from "lucide-react";
@@ -42,7 +42,7 @@ export const SongListSection: FC<SongListSectionProps> = ({
   return (
     <div className="w-full md:w-2/3 flex flex-col h-full">
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-xl font-bold">Songs ({songs?.length || 0})</h2>
+        <h2 className="text-xl font-bold">Songs ({songs?.length ?? 0})</h2>
         
         {lastDeletedSong && (
           <Button 

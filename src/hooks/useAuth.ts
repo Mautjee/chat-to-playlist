@@ -2,7 +2,6 @@ import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { createClientSideClient } from "@/lib/spotify-sdk/ClientInstance";
 import { useGlobalStore } from "@/store";
-import type { SpotifyApi } from "@spotify/web-api-ts-sdk";
 import type { UserProfile } from "@spotify/web-api-ts-sdk";
 
 interface UseAuthReturn {
@@ -54,7 +53,7 @@ export function useAuth(): UseAuthReturn {
         setCurrentUser(null as unknown as UserProfile); // Type assertion to satisfy TypeScript
       }
     }
-  }, [sessionData, setCurrentUser, user]);
+  }, [sessionData, setCurrentUser, user, setStage]);
 
   return {
     isAuthenticated: !!sessionData?.user,

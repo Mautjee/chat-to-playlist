@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Loader2, Music } from "lucide-react";
 import { Progress } from "./ui/progress";
 import { Button } from "./ui/button";
@@ -24,8 +24,8 @@ export const ExtractionProgress = ({
   setExtractedCount,
   setProgressValue,
   onNext,
-  onStart
 }: ExtractionProgressProps) => {
+
   useEffect(() => {
     if (isProcessing && extractedCount < totalCount) {
       const timer = setTimeout(() => {

@@ -75,7 +75,7 @@ export const Summary = () => {
     return <LoadingState />;
   }
 
-  const error = songsError || playlistError;
+  const error = songsError ?? playlistError;
   if (error) {
     return <ErrorState message={error.message} onRetry={handleStartOver} />;
   }

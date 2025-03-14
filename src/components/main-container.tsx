@@ -4,11 +4,9 @@ import { Upload } from "./stages/upload";
 import { TopBar } from "./top-bar";
 import { Summary } from "./stages/summary";
 import { StageBar } from "./stage-bar";
-import { useAuth } from "@/hooks/useAuth";
 
 export const MainContainer = () => {
   const stage = useGlobalStore((state) => state.stage);
-  const { isAuthenticated } = useAuth();
 
   const presentState = () => {
     switch (stage) {

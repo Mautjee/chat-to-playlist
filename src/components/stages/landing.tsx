@@ -4,7 +4,7 @@ import { Button } from "../ui/button";
 
 export function Landing() {
   const setStage = useGlobalStore((state) => state.setStage);
-  const { isAuthenticated, isLoading, displayName } = useAuth();
+  const { isLoading, displayName } = useAuth();
 
   return (
     <div className="flex h-full flex-col items-center justify-center gap-4 p-6 text-center">
@@ -19,7 +19,7 @@ export function Landing() {
             Welcome {displayName}
           </h1>
           <p className="mt-2 text-lg text-gray-600">
-            Ready to create your perfect playlist?
+            Ready to extract songs you send to your friends and turn them into a playlist?
           </p>
           <Button 
             onClick={() => setStage("upload")} 

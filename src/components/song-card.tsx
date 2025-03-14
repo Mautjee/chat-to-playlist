@@ -2,7 +2,7 @@ import Image from "next/image"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Trash2 } from "lucide-react"
-import { FC } from "react"
+import { type FC } from "react"
 
 interface SongCardProps {
   id: string
@@ -17,7 +17,7 @@ export const SongCard: FC<SongCardProps> = ({ id, coverArt, artist, title, onDel
     <Card className="w-full mb-4 overflow-hidden">
       <div className="flex items-center p-4">
         <Image
-          src={coverArt || "/placeholder.svg?height=80&width=80"}
+          src={coverArt ?? "/placeholder.svg?height=80&width=80"}
           alt={`${title} cover`}
           width={80}
           height={80}

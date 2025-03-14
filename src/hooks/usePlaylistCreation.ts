@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { createClientSideClient } from "@/lib/spotify-sdk/ClientInstance";
-import { UserProfile } from "@spotify/web-api-ts-sdk";
-import { CreatePlaylist } from "@/types/playlist";
+import { type UserProfile } from "@spotify/web-api-ts-sdk";
+import { type CreatePlaylist } from "@/types/playlist";
 
 interface PlaylistCreationOptions {
   onSuccess?: () => void;

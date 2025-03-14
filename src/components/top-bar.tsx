@@ -1,11 +1,6 @@
 import { signOut, signIn } from "next-auth/react";
 import { Button } from "./ui/button";
 import { useGlobalStore } from "@/store";
-import {
-  NavigationMenu,
-  NavigationMenuLink,
-  NavigationMenuList,
-} from "./ui/navigation-menu";
 import { type Stages } from "@/types/stages";
 import { Music } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";

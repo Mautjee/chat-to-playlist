@@ -5,7 +5,6 @@ import {
   Upload, 
   Loader2, 
   CheckSquare, 
-  CheckCircle, 
   ListMusic
 } from "lucide-react";
 import { useSession } from "next-auth/react";

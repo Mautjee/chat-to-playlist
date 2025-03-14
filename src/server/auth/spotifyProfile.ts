@@ -1,4 +1,3 @@
-import { JWT } from "next-auth/jwt";
 import SpotifyProvider from "next-auth/providers/spotify";
 
 if (!process.env.SPOTIFY_CLIENT_ID) {

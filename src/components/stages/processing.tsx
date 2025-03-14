@@ -8,7 +8,6 @@ export const Processing = () => {
   const setTrackIds = useGlobalStore((state) => state.setTrackIds);
   const setStage = useGlobalStore((state) => state.setStage);
   const completeStage = useGlobalStore((state) => state.completeStage);
-  const trackIds = useGlobalStore((state) => state.trackIds);
 
   const [doneProcessing, setDoneProcessing] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);

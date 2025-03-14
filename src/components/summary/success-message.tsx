@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { type FC } from "react";
 import { Button } from "../ui/button";
 import { Check } from "lucide-react";
 
@@ -14,7 +14,7 @@ export const SuccessMessage: FC<SuccessMessageProps> = ({ playlistName, onStartO
         <Check size={48} className="text-green-600" />
       </div>
       <h1 className="text-2xl md:text-3xl font-bold">Playlist Created Successfully!</h1>
-      <p className="text-gray-600 max-w-md">Your playlist "{playlistName}" has been created on Spotify.</p>
+      <p className="text-gray-600 max-w-md">Your playlist {playlistName} has been created on Spotify.</p>
       <Button 
         onClick={onStartOver} 
         size="lg" 
