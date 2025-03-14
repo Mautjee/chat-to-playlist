@@ -1,40 +1,43 @@
 import { useGlobalStore } from "@/store";
-import { useSession } from "next-auth/react";
-import spotify from "@/lib/spotify-sdk/ClientInstance";
-import { useEffect, useState } from "react";
+import { useAuth } from "@/hooks/useAuth";
 import { Button } from "../ui/button";
 
 export function Landing() {
-  const { data: sessionData } = useSession();
   const setStage = useGlobalStore((state) => state.setStage);
-  const setUser = useGlobalStore((state) => state.setCurrentUser);
-  const [displayName, setDisplayName] = useState<string | undefined>(undefined);
-
-  useEffect(() => {
-    const getProfile = async () => {
-      const name = await spotify.currentUser.profile();
-      setDisplayName(name.display_name);
-      setUser(name);
-    };
-
-    if (sessionData) {
-      getProfile().catch((err) => console.error(err));
-    }
-  }, [sessionData, setStage, setUser]);
+  const { isAuthenticated, isLoading, displayName } = useAuth();
 
   return (
-    <div className="flex h-full flex-col items-center justify-center gap-4">
-      {displayName ? (
+    <div className="flex h-full flex-col items-center justify-center gap-4 p-6 text-center">
+      {isLoading ? (
+        <div className="flex flex-col items-center justify-center">
+          <div className="mb-4 h-8 w-8 animate-spin rounded-full border-b-2 border-t-2 border-primary"></div>
+          <p className="text-lg">Loading your profile...</p>
+        </div>
+      ) : displayName ? (
         <>
           <h1 className="scroll-m-20 text-2xl font-extrabold tracking-tight lg:text-5xl">
             Welcome {displayName}
           </h1>
-          <Button onClick={() => setStage("upload")}>Start</Button>
+          <p className="mt-2 text-lg text-gray-600">
+            Ready to create your perfect playlist?
+          </p>
+          <Button 
+            onClick={() => setStage("upload")} 
+            size="lg" 
+            className="mt-6"
+          >
+            Get Started
+          </Button>
         </>
       ) : (
-        <h1 className="scroll-m-20 text-2xl font-extrabold tracking-tight lg:text-5xl">
-          Welcome plaease log in to use the app
-        </h1>
+        <>
+          <h1 className="scroll-m-20 text-2xl font-extrabold tracking-tight lg:text-5xl">
+            Welcome to Chat-to-Playlist
+          </h1>
+          <p className="mt-2 text-lg text-gray-600">
+            Please log in with Spotify to use the app
+          </p>
+        </>
       )}
     </div>
   );

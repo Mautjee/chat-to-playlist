@@ -3,7 +3,6 @@ export type Stages =
   | "upload"
   | "processing"
   | "selecting"
-  | "complete"
   | "summary";
 
 export const stages: Stages[] = [
@@ -11,6 +10,5 @@ export const stages: Stages[] = [
   "upload",
   "processing",
   "selecting",
-  "complete",
   "summary",
 ];

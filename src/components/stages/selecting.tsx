@@ -9,6 +9,7 @@ export const Selecting = () => {
   const [playlistDescription, setPlaylistDescription] = useState("");
   const setLocalPlaylist = useGlobalStore((state) => state.setLocalPlaylist);
   const setStage = useGlobalStore((state) => state.setStage);
+  const completeStage = useGlobalStore((state) => state.completeStage);
 
   const onSubmit = () => {
     setLocalPlaylist({
@@ -16,6 +17,7 @@ export const Selecting = () => {
       description: playlistDescription,
       trackIds: trackIds,
     });
+    completeStage("selecting");
     setStage("summary");
   };
 
@@ -35,7 +37,12 @@ export const Selecting = () => {
           placeholder="Playlist description"
           onChange={(e) => setPlaylistDescription(e.target.value)}
         />
-        <Button onClick={onSubmit}>Create playlist</Button>
+        <Button 
+          onClick={onSubmit}
+          disabled={!playlistName.trim()}
+        >
+          Create playlist
+        </Button>
       </div>
     </div>
   );
