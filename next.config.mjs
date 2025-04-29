@@ -17,11 +17,12 @@ const config = {
     locales: ["en"],
     defaultLocale: "en",
   },
-  
+
   // Configure allowed image domains for next/image
   images: {
-    domains: ['i.scdn.co'], // Allow images from Spotify's CDN
+    domains: ["i.scdn.co"], // Allow images from Spotify's CDN
   },
+  output: "standalone",
 };
 
 export default config;
