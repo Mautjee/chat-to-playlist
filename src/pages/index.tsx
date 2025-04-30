@@ -33,7 +33,7 @@ export default function Home() {
         <script
           defer
           data-domain="chat-to-playlist.sooth.dev"
-          src="http://plausible.sooth.dev/js/script.js"
+          src="https://plausible.sooth.dev/js/script.js"
         ></script>
       </Head>
       <main className="flex h-screen flex-col items-center justify-center">
