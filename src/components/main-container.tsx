@@ -22,13 +22,12 @@ export const MainContainer = () => {
         return <Summary />;
     }
   };
+  console.log("testing stuff");
   return (
-    <div className="flex h-5/6 w-full md:w-2/3 flex-col items-center justify-between">
+    <div className="flex h-5/6 w-full flex-col items-center justify-between md:w-2/3">
       <TopBar />
       <StageBar />
-      <div className="w-full flex-1">
-        {presentState()}
-      </div>
+      <div className="w-full flex-1">{presentState()}</div>
     </div>
   );
 };
